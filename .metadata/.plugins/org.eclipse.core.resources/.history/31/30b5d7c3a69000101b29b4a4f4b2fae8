@@ -1,0 +1,13 @@
+package streamsexamples;
+
+ class Product {
+
+	public Product(int i, String string, float f) {
+		private int id;
+	    private String name;
+	    private float price;
+	}
+
+	
+
+}

@@ -1,0 +1,40 @@
+package CollectionsExamples;
+
+import java.util.*;
+
+public class SubsetsWithTargetSum {
+    
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,4,5,6,7,8};
+        int target = 6;
+
+        // Call helper method to find subsets
+        findSubsets(arr, target);
+    }
+
+    // This method finds all subsets and checks if sum equals target
+    static void findSubsets(int[] arr, int target) {
+        int n = arr.length;
+
+        // There are 2^n subsets for n elements.
+        // We'll use bit masking: each number from 0 to (2^n - 1) represents a subset
+        for (int mask = 0; mask < (1 << n); mask++) {
+            List<Integer> subset = new ArrayList<>();
+            int sum = 0;
+
+            // Go through each bit of mask
+            for (int i = 0; i < n; i++) {
+                // If the i-th bit is set in mask, include arr[i] in this subset
+                if ((mask & (1 << i)) != 0) {
+                    subset.add(arr[i]);
+                    sum += arr[i];
+                }
+            }
+
+            // If this subset's sum equals target, print it
+            if (sum == target) {
+                System.out.println(subset);
+            }
+        }
+    }
+}
